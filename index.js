@@ -112,7 +112,7 @@ else if (icon === "50n") {
         url = "";
         var latitude = data.lat;
         var longitude = data.lon;
-        url = 'api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+        url = '//api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
             country = x.sys.country,
@@ -133,7 +133,7 @@ else if (icon === "50n") {
         var latitude = position.coords.latitude,
           longitude = position.coords.longitude;
         url = "";
-        url = 'api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+        url = '//api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
             country = x.sys.country,
