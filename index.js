@@ -110,8 +110,8 @@ else if (icon === "50n") {
     if (ipDetection === 1) {
       $.getJSON("https://freegeoip.net/json/github.com", function(data) {
         url = "";
-        var latitude = data.lat;
-        var longitude = data.lon;
+        var latitude = data.latitude;
+        var longitude = data.latitude;
         url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
