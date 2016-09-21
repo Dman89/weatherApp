@@ -108,11 +108,11 @@ else if (icon === "50n") {
 
   function getWeatherData(callback) {
     if (ipDetection === 1) {
-      $.getJSON("https://ip-api.com/json/?callback=?", function(data) {
+      $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
         url = "";
         var latitude = data.lat;
         var longitude = data.lon;
-        url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+        url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
             country = x.sys.country,
@@ -133,7 +133,7 @@ else if (icon === "50n") {
         var latitude = position.coords.latitude,
           longitude = position.coords.longitude;
         url = "";
-        url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+        url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
             country = x.sys.country,
