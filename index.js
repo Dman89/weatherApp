@@ -108,7 +108,7 @@ else if (icon === "50n") {
 
   function getWeatherData(callback) {
     if (ipDetection === 1) {
-      $.getJSON("ip-api.com/json/?callback=?", function(data) {
+      $.getJSON("https://freegeoip.net/json/github.com", function(data) {
         url = "";
         var latitude = data.lat;
         var longitude = data.lon;
