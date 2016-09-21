@@ -108,11 +108,11 @@ else if (icon === "50n") {
 
   function getWeatherData(callback) {
     if (ipDetection === 1) {
-      $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+      $.getJSON("//ip-api.com/json/?callback=?", function(data) {
         url = "";
         var latitude = data.lat;
         var longitude = data.lon;
-        url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+        url = '//api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
             country = x.sys.country,
