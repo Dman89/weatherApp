@@ -25,7 +25,7 @@ $(document).ready(function() {
       $.getJSON("https://api.wunderground.com/api/e077937775a219b2/geolookup/q/"+lat+","+lon+".json", function(data) {
         let city = data.location.city;
         let cityCode = data.location.state;
-        let url = 'http://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
+        let url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
         callback(url);
     });
   };
@@ -35,7 +35,7 @@ $(document).ready(function() {
     $.getJSON("https://freegeoip.net/json/github.com", function(data) {
       let city = data.city;
       let cityCode = data.region_code;
-      let url = 'http://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
+      let url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
       callback(url);
     })
   }
