@@ -1,5 +1,7 @@
 $(document).ready(function() {
-
+https://www.wunderground.com/member/registration?mode=api_signup
+dstd444
+passwrd1234
   var url = "",
     city = "",
     country = "",
@@ -120,8 +122,8 @@ else if (icon === "50n") {
       jsonCall(function(data) {
         let url = data;
           $.getJSON(url, function(x) {
-            city = x.name,
-              country = x.sys.country,
+            city = x.current_observation.c,
+              country = x.current_observation.country,
               tempTemp = x.main.temp,
               tempatureC = Math.round(x.main.temp - 273.15),
               tempatureF = Math.round(x.main.temp * 9 / 5 - 459.67),

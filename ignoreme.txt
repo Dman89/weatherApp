@@ -1,0 +1,3 @@
+https://www.wunderground.com/member/registration?mode=api_signup
+dstd444
+passwrd1234
