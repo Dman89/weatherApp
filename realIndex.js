@@ -32,11 +32,13 @@ $(document).ready(function() {
 
 
   function jsonCall(callback) {
-    $.getJSON("https://freegeoip.net/json/github.com", function(data) {
-      let city = data.city;
-      let cityCode = data.region_code;
-      let url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
-      callback(url);
+    $.getJSON('https://api.ipify.org?format=json', function(data) {
+      $.getJSON("https://freegeoip.net/json/"+data.ip, function(data) {
+        city = data.city;
+        cityCode = data.region_code;
+        let url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
+        callback(url);
+      })
     })
   }
   function getWeatherData(callback) {
