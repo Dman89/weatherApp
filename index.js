@@ -1,5 +1,7 @@
 $(document).ready(function() {
-
+https://www.wunderground.com/member/registration?mode=api_signup
+dstd444
+passwrd1234
   var url = "",
     city = "",
     country = "",
@@ -106,34 +108,40 @@ else if (icon === "50n") {
 }
 }
 
+  function jsonCall(callback) {
+    $.getJSON("https://freegeoip.net/json/github.com", function(data) {
+      url = "";
+      var latitude = data.latitude;
+      var longitude = data.longitude;
+      url = 'api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+      callback(url);
+    })
+  }
   function getWeatherData(callback) {
     if (ipDetection === 1) {
-      $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-        url = "";
-        var latitude = data.lat;
-        var longitude = data.lon;
-        url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
-        $.getJSON(url, function(x) {
-          city = x.name,
-            country = x.sys.country,
-            tempTemp = x.main.temp,
-            tempatureC = Math.round(x.main.temp - 273.15),
-            tempatureF = Math.round(x.main.temp * 9 / 5 - 459.67),
-            weather = x.weather[0].main,
-            icon = x.weather[0].icon,
-            maxTemp = x.main.temp_max,
-            description = x.weather[0].description;
-          weatherImg = weatherIfElse(tempTemp);
-          weatherIconCheck = iconGen(icon)
-          callback();
-        });
+      jsonCall(function(data) {
+        let url = data;
+          $.getJSON(url, function(x) {
+            city = x.current_observation.c,
+              country = x.current_observation.country,
+              tempTemp = x.main.temp,
+              tempatureC = Math.round(x.main.temp - 273.15),
+              tempatureF = Math.round(x.main.temp * 9 / 5 - 459.67),
+              weather = x.weather[0].main,
+              icon = x.weather[0].icon,
+              maxTemp = x.main.temp_max,
+              description = x.weather[0].description;
+            weatherImg = weatherIfElse(tempTemp);
+            weatherIconCheck = iconGen(icon)
+            callback();
+          });
       });
     } else if (ipDetection === 0) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var latitude = position.coords.latitude,
           longitude = position.coords.longitude;
         url = "";
-        url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
+        url = 'api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=84c40e904d7b73310e00fce7d1713e47';
         $.getJSON(url, function(x) {
           city = x.name,
             country = x.sys.country,
