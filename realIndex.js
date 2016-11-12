@@ -3,29 +3,29 @@ $(document).ready(function() {
   var url = "", city = "", country = "", weather = "", description = "", maxTemp = "", tempTemp = "", tempatureF = "", tempatureC = "", icon = "", something = tempatureF, ipDetection = 1;
   var weatherIfElse = function (tempTemp) {
         if (tempTemp >= 95) {
-          $('#viewerBox').css("background", "red url('images/1.jpg') center/cover no-repeat");
+          $('#viewerBox').css({"background-color": "teal", "background-image": "url('images/1.jpg')", "background-size": "cover", "background-repeat": "no-repeat", "background-position": "center"});
         }
         else if (tempTemp >= 80) {
-          $('#viewerBox').css("background", "red url('images/4.jpg') center/cover no-repeat");
+          $('#viewerBox').css({"background-color": "teal", "background-image": "url('images/4.jpg')", "background-size": "cover", "background-repeat": "no-repeat", "background-position": "center"});
         }
         else if (tempTemp >= 70) {
-          $('#viewerBox').css("background", "red url('images/5.jpg') center/cover no-repeat");
+          $('#viewerBox').css({"background-color": "teal", "background-image": "url('images/5.jpg')", "background-size": "cover", "background-repeat": "no-repeat", "background-position": "center"});
         }
         else if (tempTemp >= 60) {
-          $('#viewerBox').css("background", "red url('images/6.jpg') center/cover no-repeat");
+          $('#viewerBox').css({"background-color": "teal", "background-image": "url('images/6.jpg')", "background-size": "cover", "background-repeat": "no-repeat", "background-position": "center"});
         }
         else if (tempTemp >= 32) {
-          $('#viewerBox').css("background", "red url('images/2.jpg') center/cover no-repeat");
+          $('#viewerBox').css({"background-color": "teal", "background-image": "url('images/2.jpg')", "background-size": "cover", "background-repeat": "no-repeat", "background-position": "center"});
         }
     else if (tempTemp <= 32) {
-          $('#viewerBox').css("background", "red url('images/3.jpg') center/cover no-repeat");
+          $('#viewerBox').css({"background-color": "teal", "background-image": "url('images/3.jpg')", "background-size": "cover", "background-repeat": "no-repeat", "background-position": "center"});
         }
     };
     var jsonCallForCity = function (lat, lon, callback) {
       $.getJSON("https://api.wunderground.com/api/e077937775a219b2/geolookup/q/"+lat+","+lon+".json", function(data) {
-        let city = data.location.city;
-        let cityCode = data.location.state;
-        let url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
+        city = data.location.city;
+        cityCode = data.location.state;
+        url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
         callback(url);
     });
   };
@@ -36,7 +36,7 @@ $(document).ready(function() {
       $.getJSON("https://freegeoip.net/json/"+data.ip, function(data) {
         city = data.city;
         cityCode = data.region_code;
-        let url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
+        url = 'https://api.wunderground.com/api/e077937775a219b2/conditions/q/'+cityCode+'/'+city+'.json';
         callback(url);
       })
     })
@@ -44,7 +44,7 @@ $(document).ready(function() {
   function getWeatherData(callback) {
     if (ipDetection === 1) {
       jsonCall(function(data) {
-        let url = data;
+        url = data;
           $.getJSON(url, function(x) {
               country = x.current_observation.display_location.country,
               tempatureC = x.current_observation.temp_c,
@@ -58,10 +58,10 @@ $(document).ready(function() {
       });
     } else if (ipDetection === 0) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        let latitude = position.coords.latitude,
+        var latitude = position.coords.latitude,
           longitude = position.coords.longitude;
           jsonCallForCity(latitude,longitude,function(data) {
-            let url = data;
+            url = data;
             $.getJSON(url, function(x) {
                 city = x.current_observation.display_location.city,
                 country = x.current_observation.display_location.country,
